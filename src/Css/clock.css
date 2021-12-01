@@ -1,0 +1,31 @@
+.main {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+
+.clock {
+	border-radius: 50%;
+	display: flex;
+	width: 410px;
+	height: 410px;
+	margin: 5% auto 0 auto;
+
+	flex-direction: column;
+	justify-content: center;
+
+	background: #161932;
+}
+
+.time {
+	color: #d7e0ff;
+	font-size: 5em;
+	font-weight: bold;
+}
+
+.pauseReset {
+	margin-top: 7%;
+	font-size: 1.2em;
+	letter-spacing: 0.7em;
+	color: white;
+}

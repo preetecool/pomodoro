@@ -1,13 +1,14 @@
-import { useState } from 'react'
-import logo from './logo.svg'
-import './App.css'
+import "./Css/App.css";
+import Clock from './Components/Clock'
+import Settings from './Components/Settings'
 
 function App() {
-  const [count, setCount] = useState(0)
+	return <div className="App">
+		<h1 className="AppTitle">pomodoro</h1>
+		<Clock/>
 
-  return (
-   <div></div>
-  )
+
+	</div>;
 }
 
-export default App
+export default App;
