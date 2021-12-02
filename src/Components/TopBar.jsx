@@ -1,9 +1,13 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext} from "react";
 import "../Css/topbar.css";
+import { pomodoroContext } from '../hooks/Context'
+
 
 const TopBar = () => {
 
+const {nav, setNav} = useContext(pomodoroContext)
 
+const [loading, setLoading] = useState(true)
 
 const navItems = [
 	{item: "pomodoro", active: true},
@@ -12,8 +16,7 @@ const navItems = [
 ]
 
 
-const [nav, setNav] = useState();
-const [loading, setLoading] = useState(true)
+
 
 useEffect(() => {
 	
