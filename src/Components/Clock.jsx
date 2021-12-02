@@ -5,13 +5,19 @@ import TopBar from "./TopBar";
 
 
 const Clock = () => {
-	return <div className="main">
+	return (
+
+	<div className="main">
 		<TopBar/>
-		<div className="clock">
-			<span className="time">15:00</span>
-			<span className = "pauseReset">PAUSE</span>
+		<div className="clockContainer">
+			<div className="clock">
+				<span className="time">00:00</span>
+				<span className = "pauseReset">PAUSE</span>
+			</div>
 		</div>
-	</div>;
+	</div>
+
+	)
 };
 
 export default Clock;

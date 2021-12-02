@@ -1,25 +1,30 @@
-.menubg {
-	width: 33%;
-	display: flex;
-	justify-content: space-evenly;
+.menu-bg {
+  width: 33%;
+  display: flex;
+  justify-content: space-evenly;
 
-	margin: 0 auto 0 auto;
-	padding: 0.5% 0 0.5% 0;
-	border-radius: 40px;
+  margin: 0 auto 0 auto;
+  padding: 0.5% 0 0.5% 0;
+  border-radius: 40px;
 
-	background-color: #161932;
+  background-color: #161932;
 }
 
-.menuItem {
-	padding: 5%;
-	border-radius: 30px;
-	font-weight: 500;
+.menu-item {
+  padding: 5%;
+  border-radius: 30px;
+  font-weight: 500;
 
-	color: #d7e0ff;
-	cursor: pointer;
+  color: #d7e0ff;
+  cursor: pointer;
 }
 
-.menuItem:active {
-	background-color: #f87070;
-	color: #161932;
+.menu-active {
+  padding: 5%;
+  border-radius: 30px;
+  font-weight: 500;
+
+  background-color: #f87070;
+  color: #161932;
+  cursor: pointer;
 }

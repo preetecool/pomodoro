@@ -1,12 +1,54 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "../Css/topbar.css";
 
 const TopBar = () => {
-	return <div Class="menubg">
 
-		<span className="menuItem">pomodoro</span>
-		<span className="menuItem"> short break</span>
-		<span className="menuItem">long break</span>
+
+
+const navItems = [
+	{item: "pomodoro", active: true},
+	{item: "short break", active: false},
+	{item: "long break", active: false},
+]
+
+
+const [nav, setNav] = useState();
+const [loading, setLoading] = useState(true)
+
+useEffect(() => {
+	
+	const menuSet = () => {
+		setNav(navItems);
+		setLoading(false)
+	}
+	menuSet()
+}, [])
+
+
+const handleActive = (index) => {
+
+	const menuItems = [...navItems];
+	
+	if(menuItems[0].active) menuItems[0].active = !menuItems[0].active
+	menuItems.active = !menuItems.active
+	menuItems[index].active = !menuItems[index].active;
+
+	setNav(menuItems);
+}
+
+	return <div className="menu-bg">
+
+		{ !loading && nav.map((item, index) => {
+			return (
+			<span
+				
+				key={index} 
+				onClick={() => handleActive(index)}
+				className={item.active ? "menu-active" : "menu-item"}
+				activeStyle={{backgroundColor: '#f87070'}}
+				>{item.item}</span>)
+		})}
+		
 
 
 	</div>;
