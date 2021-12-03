@@ -1,15 +1,25 @@
 body {
-  background-color: #1e213f;
+	background-color: #1e213f;
 }
 
 .App {
-  margin-top: 2.5%;
-  text-align: center;
+	margin-top: 2.5%;
+	text-align: center;
 }
 
-.AppTitle {
-  color: #d7e0ff;
-  margin-bottom: 2.5%;
+.title {
+	color: #d7e0ff;
+	margin-bottom: 2.5%;
+}
+
+input {
+	border-style: none;
+	background-color: #eff1fa;
+	padding-left: 4%;
+	font-size: 1.4em;
+	height: 3vh;
+	width: 75%;
+	border-radius: 20px;
 }
 
 /*  */

@@ -1,10 +1,85 @@
 .settings-icon {
-  margin-top: 2.5%;
-  cursor: pointer;
-  transition: all 1s;
-  transform-origin: 50% 50%;
+	margin-top: 2.5%;
+	cursor: pointer;
+	transition: all 1s;
+	transform-origin: 50% 50%;
 }
 
 .settings-icon:hover {
-  transform: scale(1.2) rotate(90deg);
+	transform: scale(1.2) rotate(90deg);
+}
+
+.modal {
+	width: 45%;
+	height: 40%;
+	position: absolute;
+
+	left: 0;
+	right: 0;
+	top: 10%;
+	margin: 0 auto 0 auto;
+
+	text-align: left;
+	background-color: #fff;
+	border-radius: 25px;
+	z-index: 10;
+}
+
+.modal-header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 3%;
+	border-bottom: 1px solid lightgray;
+}
+
+.settings-title {
+	color: #000;
+	margin-left: 3%;
+}
+.close-icon {
+	height: 15px;
+	width: 15px;
+	bottom: 0;
+	margin-right: 3%;
+
+	cursor: pointer;
+	transition: all 1s;
+	transform-origin: 50% 50%;
+}
+
+.close-icon:hover {
+	transform: scale(1.2) rotate(90deg);
+}
+
+.settings {
+	padding: 3%;
+	margin: 0 3% 0 3%;
+	font-size: 0.7em;
+	letter-spacing: 0.5em;
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.input-wrapper {
+	display: flex;
+	flex-direction: column;
+}
+
+.time-settings {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+}
+
+.input-title {
+	color: #000;
+	letter-spacing: 0.1em;
+	font-size: 1.2em;
+	font-weight: 500;
+	opacity: 0.4;
+}
+
+.time-input {
+	padding-left: 4%;
 }

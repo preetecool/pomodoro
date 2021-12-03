@@ -1,11 +1,22 @@
 import React from "react";
 import "../Css/settings.css"
-import icon from "../../assets/icon-settings.svg";
+import settingIcon from "../../assets/icon-settings.svg";
+import closeIcon from "../../assets/icon-close.svg";
+
+import TimeSettings from './TimeSettings'
 
 const Settings = () => {
 	return <div>
-		<img className="settings-icon" src={icon}></img>
-		<div className="modal"></div>
+		<img className="settings-icon" src={settingIcon}></img>
+		<div className="modal">
+			<div className ="modal-header">
+				<h2 className="settings-title">Settings</h2>
+				<img className="close-icon" src ={closeIcon}/>
+			</div>
+			<div className="settings">
+				<TimeSettings/>
+			</div>
+		</div>
 	</div>;
 };
 
