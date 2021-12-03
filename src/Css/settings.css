@@ -1,0 +1,10 @@
+.settings-icon {
+  margin-top: 2.5%;
+  cursor: pointer;
+  transition: all 1s;
+  transform-origin: 50% 50%;
+}
+
+.settings-icon:hover {
+  transform: scale(1.2) rotate(90deg);
+}
