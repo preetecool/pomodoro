@@ -13,13 +13,22 @@ body {
 }
 
 input {
+	height: 4vh;
+	width: 70%;
+	font-size: 1.3em;
+	font-weight: bold;
+	border-radius: 12px;
+	padding-left: 2%;
 	border-style: none;
 	background-color: #eff1fa;
-	padding-left: 4%;
-	font-size: 1.4em;
-	height: 3vh;
-	width: 75%;
-	border-radius: 20px;
 }
 
-/*  */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+	-webkit-appearance: none;
+	margin: 0;
+}
+
+input[type="number"] {
+	-moz-appearance: textfield;
+}

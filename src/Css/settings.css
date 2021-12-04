@@ -83,3 +83,15 @@
 .time-input {
 	padding-left: 4%;
 }
+
+.arrow-wrapper {
+	display: flex;
+	flex-direction: column;
+	padding: 3%;
+}
+
+.arrow {
+	padding: 3%;
+	width: 18px;
+	cursor: pointer;
+}
