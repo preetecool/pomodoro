@@ -48,7 +48,6 @@ const handleActive = (index) => {
 				key={index} 
 				onClick={() => handleActive(index)}
 				className={item.active ? "menu-active" : "menu-item"}
-				activeStyle={{backgroundColor: '#f87070'}}
 				>{item.item}</span>)
 		})}
 		

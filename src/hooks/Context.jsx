@@ -7,12 +7,12 @@ const Context = ({children}) => {
     const [nav, setNav] = useState();
 
 
-    const [time, setTime] = useState({
-        workTime: null,
-        shortBreak: null, 
-        longBreak: null
+    let [time, setTime] = useState(
 
-    });
+        { workTime: 0 },  
+        { shortBreak : 0 }, 
+        { longBreak: 0 },
+    );
 
 
     return (

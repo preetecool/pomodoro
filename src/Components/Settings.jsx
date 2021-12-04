@@ -6,7 +6,7 @@ import closeIcon from "../../assets/icon-close.svg";
 import TimeSettings from './TimeSettings'
 
 const Settings = () => {
-	return <div>
+	return <>
 		<img className="settings-icon" src={settingIcon}></img>
 		<div className="modal">
 			<div className ="modal-header">
@@ -17,7 +17,7 @@ const Settings = () => {
 				<TimeSettings/>
 			</div>
 		</div>
-	</div>;
+	</>;
 };
 
 export default Settings;
