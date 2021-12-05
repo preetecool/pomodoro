@@ -9,9 +9,9 @@ const Context = ({children}) => {
 
     const [time, setTime] = useState([
 
-        { name: "pomodoro", time: null },  
-        { name: "short break", time : null }, 
-        { name: "long break",time: null },
+        { name: "pomodoro", time: 0 },  
+        { name: "short break", time : 0 }, 
+        { name: "long break",time: 0 },
     ]);
 
 

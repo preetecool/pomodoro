@@ -17,32 +17,37 @@ const TimeSettings = () => {
 		if(invalid.includes(e.key)) e.preventDefault();
 	}
 
+
 	const handleUpClick = (e, index) => {
 
 		const copiedTime = [...time];
 
-		copiedTime[index].time = copiedTime[index].time + 5
-
+		if(copiedTime[index].time < 0) e.preventDefault()
+		else copiedTime[index].time += 5		
 		setTime(copiedTime)
 
 		e.preventDefault()
 	}
 	console.log(time)
+
 	
+	const handleDownClick = (e, index) => {
+		
+		const copiedTime = [...time];
+
+		if(copiedTime[index].time < 5) copiedTime[index].time = 0
+		else  e.preventDefault()
+		setTime(copiedTime)
+
+		e.preventDefault()
+	}
 
 	const handleTimeChange = (e, index) => {
-
 		const copiedTime = [...time];
-		copiedTime[index].time += parseInt(e.target.value,10)  
-
+		copiedTime[index].time = parseInt(e.target.value,10)  
 		setTime(copiedTime)
 
 	}
-
-	
-	// (e) =>setTime(...time[index], time: e.target.value)
-
-
 
 		return (
 			<>
@@ -60,17 +65,18 @@ const TimeSettings = () => {
 									key={index}
 									type="number" 
 									name={timeSetting.name} 
+									min={0}
 									placeholder='0 min'
 									onChange={(e) => handleTimeChange(e, index)}
 									onKeyDown={blockInvalidChars}
 								
-									value={time.time}
+									value={time[index].time}
 									
 									/>
 									<div className="arrow-wrapper">
 									<button onClick={(e)=> handleUpClick(e, index)} className="arrow"> <img src={upArrow}/></button>
 									
-									<button className="arrow"><img src={downArrow}/></button>
+									<button  onClick={(e)=> handleDownClick(e, index)}className="arrow"><img src={downArrow}/></button>
 								</div>
 								</div>
 							</div>
