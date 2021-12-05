@@ -10,20 +10,28 @@ const TimeSettings = () => {
 
 	const {time, setTime} = useContext(pomodoroContext)
 
+
 	const blockInvalidChars = (e) => {
 
 		const invalid = ["e", "E", "!", "@", "#", "$", "%", "^", "&","*","(",")", "-", "_", "=", "+"]
 		if(invalid.includes(e.key)) e.preventDefault();
 	}
 
-	const handleUpClick = (event, index) => {
+	const handleUpClick = (e, index) => {
+		e.preventDefault();
 
 		const copiedTime = [...time];
 		copiedTime[index].time = copiedTime[index].time + 5
 		setTime(copiedTime)
 	}
-	console.log(time[0].time);
+	console.log(time)
+
 	
+	
+	//
+
+
+
 		return (
 			<>
 				<h3>TIME (MINUTES)</h3>
@@ -40,15 +48,15 @@ const TimeSettings = () => {
 									key={index}
 									type="number" 
 									name={timeSetting} 
-									placeholder="0 min" 
+									placeholder='0 min'
+									onChange={(e) =>setTime([{...time[index], time: e.target.value}])}
 									onKeyDown={blockInvalidChars}
-									// onChange={}
-									value={time.time}
+								
+									value={time[index].time}
 									
 									/>
-
 									<div className="arrow-wrapper">
-									<button onClick={()=> handleUpClick(time[index].time)} className="arrow"> <img src={upArrow}/></button>
+									<button onClick={()=> handleUpClick(index)} className="arrow"> <img src={upArrow}/></button>
 									
 									<button className="arrow"><img src={downArrow}/></button>
 								</div>
