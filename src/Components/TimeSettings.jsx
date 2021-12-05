@@ -32,11 +32,12 @@ const TimeSettings = () => {
 
 	
 	const handleDownClick = (e, index) => {
-		
+
 		const copiedTime = [...time];
 
-		if(copiedTime[index].time < 5) copiedTime[index].time = 0
-		else  e.preventDefault()
+		if(copiedTime[index].time <= 5) copiedTime[index].time = 0
+		else if(copiedTime[index].time >5)  copiedTime[index].time -= 5
+		else e.preventDefault()
 		setTime(copiedTime)
 
 		e.preventDefault()
