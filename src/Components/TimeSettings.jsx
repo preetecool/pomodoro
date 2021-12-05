@@ -18,17 +18,29 @@ const TimeSettings = () => {
 	}
 
 	const handleUpClick = (e, index) => {
-		e.preventDefault();
 
 		const copiedTime = [...time];
+
 		copiedTime[index].time = copiedTime[index].time + 5
+
 		setTime(copiedTime)
+
+		e.preventDefault()
 	}
 	console.log(time)
+	
+
+	const handleTimeChange = (e, index) => {
+
+		const copiedTime = [...time];
+		copiedTime[index].time += parseInt(e.target.value,10)  
+
+		setTime(copiedTime)
+
+	}
 
 	
-	
-	//
+	// (e) =>setTime(...time[index], time: e.target.value)
 
 
 
@@ -38,25 +50,25 @@ const TimeSettings = () => {
 				<form className="time-settings">
 						{time.map((timeSetting, index)=> {
 						return (
-						<div  key={index} className="input-container">
-							<div className="input-main-wrapper">
-								<h4 className = "input-title">{time.name}</h4>
+								<div  key={index} className="input-container">
+									<div className="input-main-wrapper">
+									<h4 className = "input-title">{timeSetting.name}</h4>
 
-								<div className="input-arrow-wrap" >
+									<div className="input-arrow-wrap" >
 
 									<input className ="time-input" 
 									key={index}
 									type="number" 
-									name={timeSetting} 
+									name={timeSetting.name} 
 									placeholder='0 min'
-									onChange={(e) =>setTime([{...time[index], time: e.target.value}])}
+									onChange={(e) => handleTimeChange(e, index)}
 									onKeyDown={blockInvalidChars}
 								
-									value={time[index].time}
+									value={time.time}
 									
 									/>
 									<div className="arrow-wrapper">
-									<button onClick={()=> handleUpClick(index)} className="arrow"> <img src={upArrow}/></button>
+									<button onClick={(e)=> handleUpClick(e, index)} className="arrow"> <img src={upArrow}/></button>
 									
 									<button className="arrow"><img src={downArrow}/></button>
 								</div>

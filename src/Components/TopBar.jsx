@@ -10,8 +10,11 @@ const {nav, setNav} = useContext(pomodoroContext)
 const [loading, setLoading] = useState(true)
 
 const navItems = [
+
 	{item: "pomodoro", active: true},
+
 	{item: "short break", active: false},
+	
 	{item: "long break", active: false},
 ]
 
