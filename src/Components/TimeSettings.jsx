@@ -28,7 +28,7 @@ const TimeSettings = () => {
 
 		e.preventDefault()
 	}
-	console.log(time)
+
 
 	
 	const handleDownClick = (e, index) => {
@@ -50,10 +50,15 @@ const TimeSettings = () => {
 
 	}
 
+	const handleSubmit = (e) => {
+		e.preventDefault();
+	}
+
+
 		return (
 			<>
 				<h3>TIME (MINUTES)</h3>
-				<form className="time-settings">
+				<form onSubmit={handleSubmit}className="time-settings">
 						{time.map((timeSetting, index)=> {
 						return (
 								<div  key={index} className="input-container">

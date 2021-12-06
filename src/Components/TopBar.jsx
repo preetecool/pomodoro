@@ -7,35 +7,15 @@ const TopBar = () => {
 
 const {nav, setNav} = useContext(pomodoroContext)
 
-const [loading, setLoading] = useState(true)
-
-const navItems = [
-
-	{item: "pomodoro", active: true},
-
-	{item: "short break", active: false},
-	
-	{item: "long break", active: false},
-]
-
-
-
-
-useEffect(() => {
-	
-	const menuSet = () => {
-		setNav(navItems);
-		setLoading(false)
-	}
-	menuSet()
-}, [])
-
 
 const handleActive = (index) => {
 
-	const menuItems = [...navItems];
+	const menuItems = [...nav];
 	
 	if(menuItems[0].active) menuItems[0].active = !menuItems[0].active
+	if(menuItems[index].active) menuItems[index].active = !menuItems[index].active
+	if(menuItems[2].active) menuItems[2].active = !menuItems[2].active
+
 	menuItems.active = !menuItems.active
 	menuItems[index].active = !menuItems[index].active;
 
@@ -44,7 +24,7 @@ const handleActive = (index) => {
 
 	return <div className="menu-bg">
 
-		{ !loading && nav.map((item, index) => {
+		{nav.map((item, index) => {
 			return (
 			<span
 				
