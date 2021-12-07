@@ -8,7 +8,7 @@ import downArrow from "../../assets/icon-arrow-down.svg"
 
 const TimeSettings = () => {
 
-	const {time, setTime} = useContext(pomodoroContext)
+	const {time, setTime, setModal} = useContext(pomodoroContext)
 
 
 	const blockInvalidChars = (e) => {
@@ -22,8 +22,8 @@ const TimeSettings = () => {
 
 		const copiedTime = [...time];
 
-		if(copiedTime[index].time < 0) e.preventDefault()
-		else copiedTime[index].time += 5		
+		if(copiedTime[index].minutes < 0) e.preventDefault()
+		else copiedTime[index].minutes += 5		
 		setTime(copiedTime)
 
 		e.preventDefault()
@@ -35,8 +35,8 @@ const TimeSettings = () => {
 
 		const copiedTime = [...time];
 
-		if(copiedTime[index].time <= 5) copiedTime[index].time = 0
-		else if(copiedTime[index].time >5)  copiedTime[index].time -= 5
+		if(copiedTime[index].minutes <= 5) copiedTime[index].minutes = 0
+		else if(copiedTime[index].minutes >5)  copiedTime[index].minutes -= 5
 		else e.preventDefault()
 		setTime(copiedTime)
 
@@ -45,7 +45,7 @@ const TimeSettings = () => {
 
 	const handleTimeChange = (e, index) => {
 		const copiedTime = [...time];
-		copiedTime[index].time = parseInt(e.target.value,10)  
+		copiedTime[index].minutes = parseInt(e.target.value,10)  
 		setTime(copiedTime)
 
 	}
@@ -91,7 +91,7 @@ const TimeSettings = () => {
 						)
 						})}
 						<div className="button-wrapper">
-						<button className="time-submit-button">Apply</button>
+						<button onClick={()=> setModal(false)}className="time-submit-button">Apply</button>
 						</div>
 					</form>
 			</>

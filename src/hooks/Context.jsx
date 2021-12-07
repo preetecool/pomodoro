@@ -17,9 +17,9 @@ const Context = ({children}) => {
 
     const [time, setTime] = useState([
 
-        { name: "pomodoro", time: 0 },  
-        { name: "short break", time : 0 }, 
-        { name: "long break",time: 0 },
+        { name: "pomodoro", minutes: 0},  
+        { name: "short break", minutes: 0}, 
+        { name: "long break", minutes: 0},
     ]);
 
     const [modal, setModal] = useState(false)
