@@ -11,17 +11,17 @@ const {nav, setNav} = useContext(pomodoroContext)
 const handleActive = (index) => {
 
 	const menuItems = [...nav];
-	
+
 	if(menuItems[0].active) menuItems[0].active = !menuItems[0].active
-	if(menuItems[index].active) menuItems[index].active = !menuItems[index].active
+	if(menuItems[1].active) menuItems[1].active = !menuItems[1].active
 	if(menuItems[2].active) menuItems[2].active = !menuItems[2].active
+					
+	menuItems[index].active = !menuItems[index].active
 
-	menuItems.active = !menuItems.active
-	menuItems[index].active = !menuItems[index].active;
-
+	
 	setNav(menuItems);
 }
-
+console.log(nav)
 	return <div className="menu-bg">
 
 		{nav.map((item, index) => {

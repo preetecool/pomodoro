@@ -1,39 +1,40 @@
 body {
-  background-color: #1e213f;
+	background-color: #1e213f;
 }
 
 .App {
-  margin-top: 2.5%;
-  text-align: center;
+	margin-top: 2.5%;
+	text-align: center;
 }
 
 .title {
-  color: #d7e0ff;
-  margin-bottom: 2.5%;
+	color: #d7e0ff;
+	margin-bottom: 2.5%;
 }
 
 input {
-  height: 4vh;
-  width: 70%;
-  font-size: 1.3em;
-  font-weight: bold;
-  border-radius: 12px;
-  padding-left: 2%;
-  border-style: none;
-  background-color: #eff1fa;
+	height: 4vh;
+	width: 70%;
+	font-size: 1.3em;
+	font-weight: bold;
+	border-radius: 12px;
+	padding-left: 2%;
+	border-style: none;
+	background-color: #eff1fa;
 }
 
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
+	-webkit-appearance: none;
+	margin: 0;
 }
 
 input[type="number"] {
-  -moz-appearance: textfield;
+	-moz-appearance: textfield;
 }
 
 button {
-  cursor: pointer;
-  border-style: none;
+	cursor: pointer;
+	border-style: none;
+	background: none;
 }
