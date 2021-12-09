@@ -8,51 +8,34 @@ import TopBar from "./TopBar";
 
 const Clock = () => {
 
-	const {time, nav} = useContext(pomodoroContext);
+	const {time, setTime} = useContext(pomodoroContext);
 
-	const [seconds, setSeconds] = useState(60)
+	const [seconds, setSeconds] = useState(0)
 
 	const timerSeconds = seconds < 10 ? `0${seconds}`: seconds
 
-
-	// useEffect(() => {
-		
-	// 	const timer = (index) => {
+	useEffect(()=> {
+		 
+		time.map((el, index) => {
 
 			
-	// 		if(time[index].minutes < 0) setSeconds(0);
-
-	// 		if(timerSeconds > 0 ) {
-	// 			setTimeout(() => setSeconds(seconds - 1), 1000)
-	// 		}
-	// 	}
-
-	// 	timer()
-
-	// },[])
+	},[])
 	
-
 	
-
-
-
+	
+	
 	return (
 
 	<div className="main">
 		<TopBar/>
 		<div className="clockContainer">
 			<div className="clock">
-				{nav[0].active &&
-					<span className="time">{time[0].minutes}:{timerSeconds}</span>
-				}
 
-				{nav[1].active &&
-					<span className="time">{time[1].minutes}:{timerSeconds}</span>
-				}
 
-				{nav[2].active &&
-					<span className="time">{time[2].minutes}:{timerSeconds}</span>
-				}
+			{time.map((el, index) => {
+				return time[index].active && <span key={index} className="time">{el.minutes}:{timerSeconds}</span>
+			})}
+
 
 				<span className = "pauseReset">PAUSE</span>
 			</div>

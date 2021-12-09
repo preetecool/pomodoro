@@ -3,23 +3,13 @@ import React, {createContext, useState} from 'react'
 export const pomodoroContext = createContext(null);
 
 const Context = ({children}) => {
-
-    const [nav, setNav] = useState([
-    
-
-            {item: "pomodoro", active: true},
-        
-            {item: "short break", active: false},
-            
-            {item: "long break", active: false},
-        
-    ]);
+ 
 
     const [time, setTime] = useState([
 
-        { name: "pomodoro", minutes: 0},  
-        { name: "short break", minutes: 0}, 
-        { name: "long break", minutes: 0},
+        { name: "pomodoro", minutes: 0, active: true},  
+        { name: "short break", minutes: 0, active: false}, 
+        { name: "long break", minutes: 0, active: false},
     ]);
 
     const [modal, setModal] = useState(false)
@@ -33,7 +23,7 @@ const Context = ({children}) => {
     return (
         <div>
         <pomodoroContext.Provider
-        value = {{nav, setNav, time, setTime, modal, setModal, toggleModal}}
+        value = {{time, setTime, modal, setModal, toggleModal}}
         >
             {children}
         </pomodoroContext.Provider>

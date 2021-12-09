@@ -5,12 +5,12 @@ import { pomodoroContext } from '../hooks/Context'
 
 const TopBar = () => {
 
-const {nav, setNav} = useContext(pomodoroContext)
+const {time, setTime} = useContext(pomodoroContext)
 
 
 const handleActive = (index) => {
 
-	const menuItems = [...nav];
+	const menuItems = [...time];
 
 	if(menuItems[0].active) menuItems[0].active = !menuItems[0].active
 	if(menuItems[1].active) menuItems[1].active = !menuItems[1].active
@@ -19,19 +19,18 @@ const handleActive = (index) => {
 	menuItems[index].active = !menuItems[index].active
 
 	
-	setNav(menuItems);
+	setTime(menuItems);
 }
-console.log(nav)
 	return <div className="menu-bg">
 
-		{nav.map((item, index) => {
+		{time.map((item, index) => {
 			return (
 			<span
 				
 				key={index} 
 				onClick={() => handleActive(index)}
 				className={item.active ? "menu-active" : "menu-item"}
-				>{item.item}</span>)
+				>{item.name}</span>)
 		})}
 		
 

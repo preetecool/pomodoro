@@ -76,7 +76,7 @@ const TimeSettings = () => {
 									onChange={(e) => handleTimeChange(e, index)}
 									onKeyDown={blockInvalidChars}
 								
-									value={time[index].time}
+									value={time[index].minutes}
 									
 									/>
 									<div className="arrow-wrapper">
