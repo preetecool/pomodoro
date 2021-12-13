@@ -13,53 +13,71 @@ const Clock = () => {
 	const [seconds, setSeconds] = useState(0)
 	const [minutes, setMinutes] = useState(0)
 
+
 	const timerSeconds = seconds < 10 ? `0${seconds}`: seconds
 
 	useEffect(()=> {
-		 
 
-		time.filter( e => e.active === true).map((el, index) => {
-			if(el.minutes !== 0) {
-				setSeconds(59)
+
+		// time.filter( e => e.active === true).map((el) => {
+		// 	if(el.minutes !== 0) {
+		// 		setSeconds(59)
+		// 		setMinutes(el.minutes)
+		// 		}
+
+		// 		let timer = setInterval(() => {
+		// 			clearInterval(timer);
+		
+		// 			if(seconds === 0) {
+		// 				if(minutes !== 0) {
+		// 					setSeconds(59)
+		// 					setMinutes(minutes => minutes - 1)	
+		// 				}
+						
+		// 			}else {
+		// 				setSeconds(seconds => seconds -1)
+		// 			}
+		
+		// 		}, 100)
+
+		// })
+		time.filter( e => e.active === true).map((el) => {
+				setMinutes(el.minutes)
+
 				const timer = () => {
-					setInterval(() => {
-						setSeconds(seconds => seconds - 1)
-					},1000)
-					// if(seconds === 0 && el.minutes !==0) {
-					// 	setTime({...el, minutes: minutes - 1})
-					// 	setSeconds(seconds => seconds - 1)
 
-					// }
+				
+
+						setInterval(() => {
+
+							if(seconds === 0 && minutes !== 0) {
+								setMinutes (minutes - 1)
+								setSeconds(59)
+							}
+
+							if(seconds !== 0 && minutes !==0) {
+								setSeconds(seconds => seconds - 1)
+							}
+
+							else if(seconds ===0 && minutes ===0) return;
+						},1000)
+
 				}
 				timer();
 				return clearInterval(timer);
-			}
 			
-		})
-		
-		// set seconds to 59
-		//every second 59 - 1
-		// when seconds reaches 0, time[index].minutes - 1 until minutes reaches 0.
-		
-			
-	},[])
+		})		
+	},[seconds])
 	
 	
 	
 	
 	return (
-
 	<div className="main">
 		<TopBar/>
 		<div className="clockContainer">
-			<div className="clock">
-
-
-			{time.map((el, index) => {
-				return time[index].active && <span key={index} className="time">{el.minutes}:{timerSeconds}</span>
-			})}
-
-
+			<div className="clock">	
+				<span className="time">{minutes}:{timerSeconds}</span>
 				<span className = "pauseReset">PAUSE</span>
 			</div>
 		</div>

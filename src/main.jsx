@@ -8,7 +8,7 @@ import Context from "./hooks/Context"
 ReactDOM.render(
 
   <React.StrictMode>
-    <Context>
+    <Context >
     <App />
     </Context>
   </React.StrictMode>,
