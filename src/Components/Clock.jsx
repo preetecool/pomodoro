@@ -8,66 +8,70 @@ import TopBar from "./TopBar";
 
 const Clock = () => {
 
-	const {time, setTime} = useContext(pomodoroContext);
+	const {time, setTime, modal} = useContext(pomodoroContext);
 
 	const [seconds, setSeconds] = useState(0)
 	const [minutes, setMinutes] = useState(0)
+
+	//flag state to update the timer (replacing with a new timer in UseEffect)
+	const [timerID, setTimerID] = useState(undefined)
 
 
 	const timerSeconds = seconds < 10 ? `0${seconds}`: seconds
 
 	useEffect(()=> {
 
-
-		// time.filter( e => e.active === true).map((el) => {
-		// 	if(el.minutes !== 0) {
-		// 		setSeconds(59)
-		// 		setMinutes(el.minutes)
-		// 		}
-
-		// 		let timer = setInterval(() => {
-		// 			clearInterval(timer);
-		
-		// 			if(seconds === 0) {
-		// 				if(minutes !== 0) {
-		// 					setSeconds(59)
-		// 					setMinutes(minutes => minutes - 1)	
-		// 				}
-						
-		// 			}else {
-		// 				setSeconds(seconds => seconds -1)
-		// 			}
-		
-		// 		}, 100)
-
-		// })
-		time.filter( e => e.active === true).map((el) => {
+	
+			
+		// })	
+			time.filter( e => e.active === true).map((el) => {
+				// console.log(el.minutes)
 				setMinutes(el.minutes)
-
-				const timer = () => {
-
+				setSeconds(0)
 				
 
-						setInterval(() => {
+			})
+				
+	},[time])
 
-							if(seconds === 0 && minutes !== 0) {
-								setMinutes (minutes - 1)
-								setSeconds(59)
-							}
 
-							if(seconds !== 0 && minutes !==0) {
-								setSeconds(seconds => seconds - 1)
-							}
 
-							else if(seconds ===0 && minutes ===0) return;
-						},1000)
+	useEffect(() => {
+		
+		if(minutes === 0 && seconds === 0) return;
+		if(timerID) {
+			clearTimeout(timerID);
+			setTimerID(undefined)
+		}
+		const timer = setTimeout(() => {
 
+			if(seconds === 0) {
+				if(minutes !== 0) {
+					setMinutes(minutes => minutes -1)
+					setSeconds(59)
 				}
-				timer();
-				return clearInterval(timer);
+			}else setSeconds(seconds => seconds -1)
+			console.log("seconds", seconds)
+		}, 100)
+		setTimerID(timer)
+
+	}, [minutes, seconds])
+
+	// 		// clearInterval(timer);
+	// 		let timer = setInterval(() => {
+	// 		if(seconds === 0) {
+	// 			if(minutes !== 0){
+	// 				setMinutes(minutes - 1)
+	// 				setSeconds(59)
+	// 			}
 			
-		})		
-	},[seconds])
+	// 		}   
+			
+			
+	// 		else setSeconds(seconds - 1)
+
+	// 		return () => clearInterval(timer)
+	// }, 100)
 	
 	
 	

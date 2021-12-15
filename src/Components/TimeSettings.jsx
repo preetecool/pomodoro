@@ -45,6 +45,7 @@ const TimeSettings = () => {
 
 	const handleTimeChange = (e, index) => {
 		const copiedTime = [...time];
+		
 		copiedTime[index].minutes = parseInt(e.target.value,10)  
 		setTime(copiedTime)
 
@@ -53,7 +54,6 @@ const TimeSettings = () => {
 	const handleSubmit = (e) => {
 		e.preventDefault();
 	}
-
 
 		return (
 			<>
