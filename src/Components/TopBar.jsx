@@ -12,13 +12,10 @@ const handleActive = (index) => {
 
 	const menuItems = [...time];
 
-	if(menuItems[0].active) menuItems[0].active = !menuItems[0].active
-	if(menuItems[1].active) menuItems[1].active = !menuItems[1].active
-	if(menuItems[2].active) menuItems[2].active = !menuItems[2].active
-					
+	menuItems.map((el) => {
+		if(el.active) return el.active = false;
+	})				
 	menuItems[index].active = !menuItems[index].active
-
-	
 	setTime(menuItems);
 }
 	return <div className="menu-bg">

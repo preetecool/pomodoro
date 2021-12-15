@@ -6,7 +6,7 @@ const Context = ({children}) => {
  
 
     const [time, setTime] = useState([
-
+        // make 1 object
         { name: "pomodoro", minutes: 0, active: true},  
         { name: "short break", minutes: 0, active: false}, 
         { name: "long break", minutes: 0, active: false},

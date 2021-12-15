@@ -13,19 +13,15 @@ const Clock = () => {
 	const [seconds, setSeconds] = useState(0)
 	const [minutes, setMinutes] = useState(0)
 
-	//flag state to update the timer (replacing with a new timer in UseEffect)
+	//update the timer (replacing with a new timer in UseEffect, every render)
 	const [timerID, setTimerID] = useState(undefined)
 
 
 	const timerSeconds = seconds < 10 ? `0${seconds}`: seconds
 
 	useEffect(()=> {
-
-	
-			
-		// })	
+		
 			time.filter( e => e.active === true).map((el) => {
-				// console.log(el.minutes)
 				setMinutes(el.minutes)
 				setSeconds(0)
 				
@@ -37,42 +33,31 @@ const Clock = () => {
 
 
 	useEffect(() => {
-		
-		if(minutes === 0 && seconds === 0) return;
-		if(timerID) {
-			clearTimeout(timerID);
-			setTimerID(undefined)
-		}
-		const timer = setTimeout(() => {
 
-			if(seconds === 0) {
-				if(minutes !== 0) {
-					setMinutes(minutes => minutes -1)
-					setSeconds(59)
-				}
-			}else setSeconds(seconds => seconds -1)
-			console.log("seconds", seconds)
-		}, 100)
-		setTimerID(timer)
+			if(minutes === 0 & seconds === 0) return;
+	
+			if(timerID) {
+				clearTimeout(timerID);
+				setTimerID(undefined)
+			}
+			const timer = setTimeout(() => {
+	
+				if(seconds === 0) {
+					if(minutes !== 0) {
+						setMinutes(minutes => minutes -1)
+						setSeconds(59)
+					}
+				}else setSeconds(seconds => seconds -1)
+	
+			}, 1000)
+			setTimerID(timer)
+
+
+	
+	
 
 	}, [minutes, seconds])
 
-	// 		// clearInterval(timer);
-	// 		let timer = setInterval(() => {
-	// 		if(seconds === 0) {
-	// 			if(minutes !== 0){
-	// 				setMinutes(minutes - 1)
-	// 				setSeconds(59)
-	// 			}
-			
-	// 		}   
-			
-			
-	// 		else setSeconds(seconds - 1)
-
-	// 		return () => clearInterval(timer)
-	// }, 100)
-	
 	
 	
 	
