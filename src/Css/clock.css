@@ -1,37 +1,62 @@
 .main {
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: auto;
 }
 
+/* @media all and (max-width: 300px) {
+  .main {
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+  }
+} */
+
 .clockContainer {
-	display: flex;
-	flex-direction: column;
-	justify-content: space-evenly;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+@media all and (max-width: 300px) {
+  .clockContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
 }
 
 .clock {
-	border-radius: 50%;
-	display: flex;
-	width: 410px;
-	height: 410px;
-	margin: 2.5% auto 0 auto;
+  border-radius: 50%;
+  display: flex;
+  width: 410px;
+  height: 410px;
+  margin: 2.5% auto 0 auto;
 
-	flex-direction: column;
-	justify-content: center;
+  flex-direction: column;
+  justify-content: center;
 
-	background: #161932;
+  background: #161932;
+}
+@media all and (max-width: 300px) {
+  .clock {
+    width: 290px;
+    height: 290px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
 }
 
 .time {
-	color: #d7e0ff;
-	font-size: 5em;
-	font-weight: bold;
+  color: #d7e0ff;
+  font-size: 5em;
+  font-weight: bold;
 }
 
 .pauseReset {
-	margin-top: 7%;
-	font-size: 1.2em;
-	letter-spacing: 0.7em;
-	color: white;
+  margin-top: 7%;
+  font-size: 1.2em;
+  letter-spacing: 0.7em;
+  color: white;
 }

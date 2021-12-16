@@ -8,7 +8,7 @@ import TopBar from "./TopBar";
 
 const Clock = () => {
 
-	const {time, setTime, modal} = useContext(pomodoroContext);
+	const {time, setTime, modal, pause, setPause} = useContext(pomodoroContext);
 
 	const [seconds, setSeconds] = useState(0)
 	const [minutes, setMinutes] = useState(0)
@@ -21,20 +21,19 @@ const Clock = () => {
 
 	useEffect(()=> {
 		
-			time.filter( e => e.active === true).map((el) => {
+			time.filter( e => e.active).map((el) => {
 				setMinutes(el.minutes)
 				setSeconds(0)
-				
-
 			})
 				
 	},[time])
 
 
-
 	useEffect(() => {
 
-			if(minutes === 0 & seconds === 0) return;
+			if(pause) return
+
+			if(minutes === 0 && seconds === 0) return;
 	
 			if(timerID) {
 				clearTimeout(timerID);
@@ -44,19 +43,25 @@ const Clock = () => {
 	
 				if(seconds === 0) {
 					if(minutes !== 0) {
-						setMinutes(minutes => minutes -1)
+						setMinutes(minutes => minutes - 1)
 						setSeconds(59)
 					}
-				}else setSeconds(seconds => seconds -1)
+				}else setSeconds(seconds => seconds - 1)
 	
 			}, 1000)
 			setTimerID(timer)
-
-
-	
-	
-
 	}, [minutes, seconds])
+
+
+	const handlePause = (e) => {
+
+		e.preventDefault();
+		if(pause && seconds !==0) setSeconds(seconds - 1)
+		else if(pause && seconds === 0) setSeconds(59)
+		setPause(!pause);
+	}
+
+	console.log(pause)
 
 	
 	
@@ -67,7 +72,7 @@ const Clock = () => {
 		<div className="clockContainer">
 			<div className="clock">	
 				<span className="time">{minutes}:{timerSeconds}</span>
-				<span className = "pauseReset">PAUSE</span>
+				<button onClick={handlePause}className = "pauseReset">{pause ? "CONTINUE": "PAUSE"}</button>
 			</div>
 		</div>
 	</div>

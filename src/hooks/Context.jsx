@@ -16,14 +16,16 @@ const Context = ({children}) => {
 
     const toggleModal = () => {
 		setModal(!modal)
-	}
+    }
+    
+    const [pause, setPause] = useState(false)
 
 
 
     return (
         <div>
         <pomodoroContext.Provider
-        value = {{time, setTime, modal, setModal, toggleModal}}
+        value = {{time, setTime, modal, setModal, toggleModal, pause, setPause}}
         >
             {children}
         </pomodoroContext.Provider>
