@@ -1,5 +1,5 @@
 .settings-icon {
-	margin-top: 2.5%;
+	margin: 30px auto;
 	cursor: pointer;
 	transition: all 1s;
 	transform-origin: 50% 50%;
@@ -10,7 +10,8 @@
 }
 
 .modal {
-	width: 55%;
+	max-width: 80%;
+	min-width: 55%;
 	position: absolute;
 
 	left: 0;
@@ -52,7 +53,6 @@
 }
 
 .settings {
-	height: 50vh;
 	padding: 3%;
 	display: flex;
 	flex-wrap: wrap;
@@ -97,8 +97,9 @@
 
 .time-input {
 	padding-left: 8%;
-	height: 10vh;
+	height: 8vh;
 	width: 100%;
+	border-radius: 15px;
 }
 
 .arrow-wrapper {
@@ -139,8 +140,10 @@
 
 .time-submit-button {
 	width: 120px;
-	height: 75px;
-	border-radius: 15px;
+	height: 53px;
+	border-radius: 30px;
+	margin-top: 5%;
+	margin-bottom: -5%;
 
 	color: #fff;
 	font-size: 1.3em;
@@ -157,4 +160,55 @@
 .time-submit-button:hover {
 	background-color: #fc5858;
 	transform: scale(1.05);
+}
+
+@media all and (max-width: 410px) {
+	.modal {
+		max-width: 90%;
+		min-width: 85%;
+		padding: 3%;
+		position: absolute;
+
+		left: 0;
+		right: 0;
+		top: 10%;
+		margin: 0 auto 0 auto;
+
+		background-color: #fff;
+		border-radius: 25px;
+		z-index: 10;
+	}
+
+	.settings {
+		height: 90%;
+		width: 90%;
+		display: flex;
+		justify-content: center;
+	}
+
+	.time-settings {
+		display: flex;
+		justify-content: center;
+	}
+
+	.input-main-wrapper {
+		width: 100%;
+		display: flex;
+	}
+
+	.time-input {
+		padding-left: 8%;
+		height: 8vh;
+		width: 100%;
+	}
+
+	.settings-subtitle {
+		text-align: center;
+	}
+
+	.time-input {
+		padding-left: 8%;
+		height: 6vh;
+		width: 100%;
+	}
 }

@@ -1,10 +1,8 @@
 import React, { useContext, useEffect, useState } from "react";
 import "../Css/clock.css";
-import { pomodoroContext } from '../hooks/Context'
-
 
 import TopBar from "./TopBar";
-
+import { pomodoroContext } from '../hooks/Context'
 
 const Clock = () => {
 
@@ -18,6 +16,7 @@ const Clock = () => {
 
 
 	const timerSeconds = seconds < 10 ? `0${seconds}`: seconds
+
 
 	useEffect(()=> {
 		
@@ -57,22 +56,28 @@ const Clock = () => {
 
 		e.preventDefault();
 		if(pause && seconds !==0) setSeconds(seconds - 1)
-		else if(pause && seconds === 0) setSeconds(59)
+		else if(pause && seconds === 0 && minutes !== 0) {
+			
+			setMinutes(minutes - 1)
+			setSeconds(59)
+		}
+		
 		setPause(!pause);
 	}
 
-	console.log(pause)
+	
 
-	
-	
-	
 	return (
 	<div className="main">
 		<TopBar/>
 		<div className="clockContainer">
 			<div className="clock">	
+			<svg viewBox="0 0 300 100" xmlns="http://www.w3.org/2000/svg" stroke="red" fill="none">
+				<circle cx="50" cy="50" r="40" />
+				</svg>
+
 				<span className="time">{minutes}:{timerSeconds}</span>
-				<button onClick={handlePause}className = "pauseReset">{pause ? "CONTINUE": "PAUSE"}</button>
+					<button onClick={handlePause}className = "pauseReset">{pause ? "CONTINUE": "PAUSE"}</button>
 			</div>
 		</div>
 	</div>

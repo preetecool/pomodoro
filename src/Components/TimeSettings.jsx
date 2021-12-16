@@ -58,7 +58,7 @@ const TimeSettings = () => {
 
 	return (
 		<>
-			<h3>TIME (MINUTES)</h3>
+			<h3 className="settings-subtitle">TIME (MINUTES)</h3>
 			<form onSubmit={handleSubmit} className="time-settings">
 				{time.map((timeSetting, index) => {
 					return (
