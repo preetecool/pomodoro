@@ -47,7 +47,8 @@ const TimeSettings = () => {
 		const copiedTime = [...time];
 
 		copiedTime[index].minutes = parseInt(e.target.value, 10)
-		setTime(copiedTime)
+		if( e.target.value == 0) return;
+		else setTime(copiedTime)
 
 	}
 

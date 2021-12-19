@@ -15,6 +15,7 @@
 
 .clock {
 	border-radius: 50%;
+	position: relative;
 	display: flex;
 	width: 410px;
 	height: 410px;

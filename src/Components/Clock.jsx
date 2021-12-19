@@ -2,7 +2,8 @@ import React, { useContext, useEffect, useState } from "react";
 import "../Css/clock.css";
 
 import TopBar from "./TopBar";
-import { pomodoroContext } from '../hooks/Context'
+import { pomodoroContext } from '../hooks/Context';
+import CircularProgress from './CircularProgress';
 
 const Clock = () => {
 
@@ -72,10 +73,7 @@ const Clock = () => {
 		<TopBar/>
 		<div className="clockContainer">
 			<div className="clock">	
-			<svg viewBox="0 0 300 100" xmlns="http://www.w3.org/2000/svg" stroke="red" fill="none">
-				<circle cx="50" cy="50" r="40" />
-				</svg>
-
+			{/* <CircularProgress size={330} strokeWidth={15}/> */}
 				<span className="time">{minutes}:{timerSeconds}</span>
 					<button onClick={handlePause}className = "pauseReset">{pause ? "CONTINUE": "PAUSE"}</button>
 			</div>
