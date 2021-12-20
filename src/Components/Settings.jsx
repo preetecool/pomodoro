@@ -7,8 +7,7 @@ import TimeSettings from "./TimeSettings";
 import { pomodoroContext } from "../hooks/Context";
 
 const Settings = () => {
-	const { modal, setModal, toggleModal } = useContext(pomodoroContext);
-
+	const { modal, toggleModal } = useContext(pomodoroContext);
 	return (
 		<>
 			<button onClick={toggleModal}>

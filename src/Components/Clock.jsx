@@ -6,24 +6,28 @@ import { pomodoroContext } from "../hooks/Context";
 import CircularProgress from "./CircularProgress";
 
 const Clock = () => {
-	const { time, setTime, modal, pause, setPause } = useContext(pomodoroContext);
+
+	const { time, pause, setPause } = useContext(pomodoroContext);
 
 	const [seconds, setSeconds] = useState(0);
 	const [minutes, setMinutes] = useState(0);
-
-	//update the timer (replacing with a new timer in UseEffect, every render)
+	//update the timer (replacing with a new timer in useEffect, every render)
 	const [timerID, setTimerID] = useState(undefined);
+
 	const [progress, setProgress] = useState(100);
+	const [progressID, setProgressID] = useState(undefined)
+
 
 	const timerSeconds = seconds < 10 ? `0${seconds}` : seconds;
 
 	useEffect(() => {
 		time
-			.filter((e) => e.active)
-			.map((el) => {
-				setMinutes(el.minutes);
-				setSeconds(0);
-				setProgress(100);
+		.filter((e) => e.active)
+		.map((el) => {
+			setMinutes(el.minutes);
+			setSeconds(0);
+			setProgress(100);
+				
 			});
 	}, [time]);
 
@@ -46,13 +50,31 @@ const Clock = () => {
 		setTimerID(timer);
 	}, [minutes, seconds]);
 
+	// updating circular progress every n secodns.
 	useEffect(() => {
+
+		if(pause) return;
+		if (progress === 0) return;
+
+		if (progressID) {
+			clearTimeout (progressID);
+			setProgressID(undefined);
+		}
+
+		let updateEverySeconds = 0;
 		time
-			.filter((e) => e.active)
-			.map((el) => {
-				setProgress(progress - (el.minutes * 59) / 1000);
+		.filter((e) => e.active)
+		.map((el) => {
+				updateEverySeconds = el.minutes * 59 / 100
+				
 			});
-	}, [seconds]);
+		const elipseProgress = setTimeout(()=> {
+			setProgress(progress => progress - 1);
+		}, 100 * updateEverySeconds) // update progress - 1 
+		setProgressID(elipseProgress);
+	}, [progress, pause]);
+
+	console.log(progress)
 
 	const handlePause = (e) => {
 		e.preventDefault();
