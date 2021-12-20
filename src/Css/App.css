@@ -44,6 +44,12 @@ button {
 	background: none;
 }
 
+svg {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
 @media all and (max-width: 410px) {
 	body {
 		display: flex;

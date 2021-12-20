@@ -1,11 +1,20 @@
-import React from 'react'
+import React, {useEffect, useState} from 'react'
 import '../Css/circularprogress.css';
 
 // passing size as props
-const CircularProgress = ({size, strokeWidth}) => {
+const CircularProgress = ({size, strokeWidth, percentage}) => {
 
-const viewBox = ` 0 0 ${size} ${size}`
-const radius = (size - strokeWidth) / 2
+
+    const [progress, setProgress] = useState(0)
+    
+    useEffect(() => {
+        setProgress(percentage)
+    }, [percentage])
+
+    const viewBox = ` 0 0 ${size} ${size}`
+    const radius = (size - strokeWidth) / 2
+    const circumference = radius * Math.PI * 2
+    const dash = (progress * circumference) / 100
 
 
     return (
@@ -18,7 +27,21 @@ const radius = (size - strokeWidth) / 2
                 r={radius}
                 strokeWidth={`${strokeWidth}px`} 
                 fill="none"
-                stroke="red"
+                stroke="#161932"
+                />
+                <circle
+                 cx={size / 2} 
+                 cy={size / 2} 
+                 r={radius}
+                 strokeWidth={`${strokeWidth}px`} 
+                 fill="none"
+                 stroke="#F87070"
+                 transform={`rotate(-90 ${size / 2} ${size / 2})`}
+                 strokeDasharray={[dash, circumference - dash]}
+                 strokeLinecap="round"
+                 style={{transition: "all 0.5s ease"}}
+
+                
                 />
 				</svg>
         </div>

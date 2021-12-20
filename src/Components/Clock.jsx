@@ -14,10 +14,12 @@ const Clock = () => {
 
 	//update the timer (replacing with a new timer in UseEffect, every render)
 	const [timerID, setTimerID] = useState(undefined)
+	const [updateCircle, setUpdateCircle] = useState(100)
 
 
 	const timerSeconds = seconds < 10 ? `0${seconds}`: seconds
 
+	
 
 	useEffect(()=> {
 		
@@ -48,9 +50,22 @@ const Clock = () => {
 					}
 				}else setSeconds(seconds => seconds - 1)
 	
-			}, 1000)
+			}, 100)
 			setTimerID(timer)
+
 	}, [minutes, seconds])
+
+
+
+	useEffect(() => {
+		
+		time.filter( e => e.active).map((el) => {
+			
+			let updateEveryX = ( el.minutes * 60 / 100)
+			setUpdateCircle(updateCircle - 1)
+		})
+		
+	}, [seconds])
 
 
 	const handlePause = (e) => {
@@ -73,7 +88,7 @@ const Clock = () => {
 		<TopBar/>
 		<div className="clockContainer">
 			<div className="clock">	
-			{/* <CircularProgress size={330} strokeWidth={15}/> */}
+			<CircularProgress size={360} strokeWidth={10} percentage={updateCircle}/>
 				<span className="time">{minutes}:{timerSeconds}</span>
 					<button onClick={handlePause}className = "pauseReset">{pause ? "CONTINUE": "PAUSE"}</button>
 			</div>
