@@ -34,6 +34,7 @@
 }
 
 .pauseReset {
+	z-index: 1000;
 	text-align: center;
 	margin-top: 10%;
 	font-size: 1em;
