@@ -6,7 +6,6 @@ import { pomodoroContext } from "../hooks/Context";
 import CircularProgress from "./CircularProgress";
 
 const Clock = () => {
-
 	const { time, pause, setPause } = useContext(pomodoroContext);
 
 	const [seconds, setSeconds] = useState(0);
@@ -15,20 +14,20 @@ const Clock = () => {
 	const [timerID, setTimerID] = useState(undefined);
 
 	const [progress, setProgress] = useState(100);
-	const [progressID, setProgressID] = useState(undefined)
-
+	const [progressID, setProgressID] = useState(undefined);
+	const [updateEverySeconds, setUpdateEverySeconds] = useState(undefined);
 
 	const timerSeconds = seconds < 10 ? `0${seconds}` : seconds;
 
 	useEffect(() => {
 		time
-		.filter((e) => e.active)
-		.map((el) => {
-			setMinutes(el.minutes);
-			setSeconds(0);
-			setProgress(100);
-				
+			.filter((e) => e.active)
+			.map((el) => {
+				setMinutes(el.minutes);
+				setUpdateEverySeconds(el.minutes * 59 * 10);
 			});
+		setSeconds(0);
+		setProgress(100);
 	}, [time]);
 
 	useEffect(() => {
@@ -46,35 +45,26 @@ const Clock = () => {
 					setSeconds(59);
 				}
 			} else setSeconds((seconds) => seconds - 1);
-		}, 100);
+		}, 1000);
 		setTimerID(timer);
 	}, [minutes, seconds]);
 
-	// updating circular progress every n secodns.
+	// updating circular progress every n seconds.
 	useEffect(() => {
-
-		if(pause) return;
-		if (progress === 0) return;
+		if (pause || progress === 0) return;
 
 		if (progressID) {
-			clearTimeout (progressID);
+			clearTimeout(progressID);
 			setProgressID(undefined);
 		}
 
-		let updateEverySeconds = 0;
-		time
-		.filter((e) => e.active)
-		.map((el) => {
-				updateEverySeconds = el.minutes * 59 / 100
-				
-			});
-		const elipseProgress = setTimeout(()=> {
-			setProgress(progress => progress - 1);
-		}, 100 * updateEverySeconds) // update progress - 1 
+		const elipseProgress = setTimeout(() => {
+			setProgress((progress) => progress - 1);
+		}, updateEverySeconds);
 		setProgressID(elipseProgress);
 	}, [progress, pause]);
 
-	console.log(progress)
+	console.log(progress);
 
 	const handlePause = (e) => {
 		e.preventDefault();
@@ -92,7 +82,7 @@ const Clock = () => {
 			<TopBar />
 			<div className="clockContainer">
 				<div className="clock">
-					<CircularProgress size={360} strokeWidth={10} percentage={progress} />
+					<CircularProgress size={340} strokeWidth={8} percentage={progress} />
 					<span className="time">
 						{minutes}:{timerSeconds}
 					</span>

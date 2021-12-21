@@ -4,7 +4,6 @@ import "../Css/circularprogress.css";
 // passing size as props
 const CircularProgress = ({ size, strokeWidth, percentage }) => {
 	const [progress, setProgress] = useState(0);
-
 	useEffect(() => {
 		setProgress(percentage);
 	}, [percentage]);
@@ -40,7 +39,7 @@ const CircularProgress = ({ size, strokeWidth, percentage }) => {
 					transform={`rotate(-90 ${size / 2} ${size / 2})`}
 					strokeDasharray={[dash, circumference - dash]}
 					strokeLinecap="round"
-					style={{ transition: "all 0.1s" }}
+					style={{ transition: "all 0.01s ease" }}
 				/>
 			</svg>
 		</div>
