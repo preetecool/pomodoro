@@ -19,6 +19,7 @@ const Clock = () => {
 
 	const timerSeconds = seconds < 10 ? `0${seconds}` : seconds;
 
+	//defining time and calculating progress bar reduction
 	useEffect(() => {
 		time
 			.filter((e) => e.active)
@@ -30,10 +31,10 @@ const Clock = () => {
 		setProgress(100);
 	}, [time]);
 
+	// calculating remaining time
 	useEffect(() => {
 		if (pause) return;
 		if (minutes === 0 && seconds === 0) return;
-
 		if (timerID) {
 			clearTimeout(timerID);
 			setTimerID(undefined);
@@ -44,12 +45,13 @@ const Clock = () => {
 					setMinutes((minutes) => minutes - 1);
 					setSeconds(59);
 				}
-			} else setSeconds((seconds) => seconds - 1);
+			} else if (seconds <= 0 && minutes === 0) return setSeconds(0);
+			else setSeconds((seconds) => seconds - 1);
 		}, 1000);
 		setTimerID(timer);
 	}, [minutes, seconds]);
 
-	// updating circular progress every n seconds.
+	// updating circular progress n% every second
 	useEffect(() => {
 		if (pause || progress <= 0) return;
 
@@ -63,8 +65,6 @@ const Clock = () => {
 		}, updateEverySeconds);
 		setProgressID(elipseProgress);
 	}, [seconds]);
-
-	console.log(progress);
 
 	const handlePause = (e) => {
 		e.preventDefault();

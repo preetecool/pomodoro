@@ -24,7 +24,12 @@
 	flex-direction: column;
 	justify-content: center;
 
-	background: #161932;
+	background: rgb(46, 50, 90);
+	background: linear-gradient(
+		315deg,
+		rgba(46, 50, 90, 1) 0%,
+		rgba(14, 17, 42, 1) 100%
+	);
 }
 
 .time {
