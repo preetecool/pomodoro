@@ -24,7 +24,7 @@ const Clock = () => {
 			.filter((e) => e.active)
 			.map((el) => {
 				setMinutes(el.minutes);
-				setUpdateEverySeconds(el.minutes * 59 * 10);
+				setUpdateEverySeconds((el.minutes * 60) / 100);
 			});
 		setSeconds(0);
 		setProgress(100);
@@ -51,7 +51,7 @@ const Clock = () => {
 
 	// updating circular progress every n seconds.
 	useEffect(() => {
-		if (pause || progress === 0) return;
+		if (pause || progress <= 0) return;
 
 		if (progressID) {
 			clearTimeout(progressID);
@@ -59,10 +59,10 @@ const Clock = () => {
 		}
 
 		const elipseProgress = setTimeout(() => {
-			setProgress((progress) => progress - 1);
+			setProgress((progress) => progress - 1 / updateEverySeconds);
 		}, updateEverySeconds);
 		setProgressID(elipseProgress);
-	}, [progress, pause]);
+	}, [seconds]);
 
 	console.log(progress);
 
