@@ -54,8 +54,8 @@ const TimeSettings = () => {
 		const copiedTime = [...time];
 
 		copiedTime[index].minutes = parseInt(e.target.value, 10);
-		if (e.target.value == 0) return;
-		else setTime(copiedTime);
+		 setTime(copiedTime);
+
 	};
 
 	const handleSubmit = (e) => {
