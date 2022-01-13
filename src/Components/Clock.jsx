@@ -34,7 +34,11 @@ const Clock = () => {
 	// calculating remaining time
 	useEffect(() => {
 		if (pause) return;
-		if (minutes === 0 && seconds === 0) return;
+		if (minutes === 0 && seconds === 0){
+			setSeconds(0)
+			setMinutes(0);
+		}
+	
 		if (timerID) {
 			clearTimeout(timerID);
 			setTimerID(undefined);
